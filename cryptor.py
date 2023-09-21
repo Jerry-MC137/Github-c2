@@ -33,7 +33,7 @@ def encrypt(plaintext):
     cipher_rsa, _ = get_rsa_cipher('pub')
     encrypted_session_key = cipher_rsa.encrypt(session_key)
 
-    msg_payload = encrypted_session_key + cipher_aes.nonce +tag + ciphertext
+    msg_payload = encrypted_session_key + cipher_aes.nonce + tag + ciphertext
     encrypted = base64.encodebytes(msg_payload)
     return(encrypted)
 

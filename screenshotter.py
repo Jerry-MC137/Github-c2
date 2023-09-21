@@ -15,12 +15,12 @@ def screenshot(name='screenshot'):
     hdesktop = win32gui.GetDesktopWindow()
     width, height, left, top = get_dimensions()
 
-    desktop_dc = wingui.GetDesktopWindow()
-    img_dc = wingui32.GetDesktopWindow()
+    desktop_dc = wingui.GetWindowDC(hdesktop)
+    img_dc = win32ui.CreateDCFromHandle(desktop_dc)
     mem_dc = img.dc.CreateCompatibleDC()
 
-    screenshot = wingui32.CreateBitmap()
-    screenshot.CreateCompatibleBitman(img_dc, width, height)
+    screenshot = win32ui.CreateBitmap()
+    screenshot.CreateCompatibleBitmap(img_dc, width, height)
     mem_dc.SelectObject(screenshot)
     mem_dc.BitBlt((0,0), (width, height),
                     img_dc, (left, top), win32con.SRCCOPY)
